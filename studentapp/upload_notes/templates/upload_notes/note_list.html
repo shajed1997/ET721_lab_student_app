@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uploaded Notes</title>
+</head>
+<body>
+    <h1>Uploaded Notes</h1>
+    <a href="{% url 'add_note' %}">Upload a new note</a>
+    <ul>
+        {% for note in notes %}
+        <li>
+            <h2>{{ note.title }}</h2>
+            <img src="{{ note.image.url }}" alt="{{ note.title }}" width="200">
+            <p>Subject: {{ note.subject }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

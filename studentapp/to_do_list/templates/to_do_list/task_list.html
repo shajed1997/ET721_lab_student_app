@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+</head>
+<body>
+    <h1>Task List</h1>
+    <a href="{% url 'add_task' %}">Add a new task</a>
+    <ul>
+        {% for task in tasks %}
+        <li>
+            <h2>{{ task.title }}</h2>
+            <p>{{ task.description }}</p>
+            <p>Category: {{ task.get_category_display }}</p>
+            <p>Due Date: {{ task.due_date }}</p>
+            <p>Status: {% if task.completed %}Completed{% else %}Incomplete{% endif %}</p>
+            <a href="{% url 'update_task' task.pk %}">Edit</a> | 
+            <a href="{% url 'delete_task' task.pk %}">Delete</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
